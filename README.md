@@ -1,16 +1,49 @@
-# React + Vite
+# GymBarrio App
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+PWA para gimnasios de barrios privados: socios eligen objetivo, siguen rutinas con video y temporizador de descanso. Optimizada para celular y tablets en modo kiosco.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Next.js (App Router) + TypeScript
+- Tailwind CSS
+- Lucide React
+- Supabase (Auth + Postgres)
 
-## React Compiler
+## Arranque rápido (modo demo)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Sin configurar Supabase, la app usa datos mock:
 
-## Expanding the Oxlint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Abrí [http://localhost:3000](http://localhost:3000) y entrá a `/gym/barrio-los-castores`.
+
+## Supabase
+
+1. Creá un proyecto en Supabase.
+2. Corré el SQL de `supabase/migrations/20261005120000_initial_schema.sql` en el SQL Editor (o con la CLI).
+3. Copiá `.env.local.example` a `.env.local` y completá las keys.
+4. Creá un usuario en Authentication para el panel `/admin`.
+
+## Rutas
+
+| Ruta | Descripción |
+|------|-------------|
+| `/` | Selección de gym / código (modo kiosco) |
+| `/gym/[slug]` | Objetivos / rutinas del gym |
+| `/gym/[slug]/routine/[id]` | Lista de ejercicios + comenzar |
+| `/gym/[slug]/routine/[id]/play` | Reproductor guiado |
+| `/admin` | Auth + CRUD ejercicios |
+| `/admin/routines` | Creador de rutinas |
+
+## Estructura clave
+
+```
+src/app/                  # App Router
+src/components/           # UI de flujo + WorkoutPlayer
+src/lib/supabase/         # Clientes browser/server
+src/lib/data.ts           # Acceso a datos (Supabase o mock)
+supabase/migrations/      # Esquema SQL
+```

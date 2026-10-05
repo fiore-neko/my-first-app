@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0b1f33;
+  --cream: #f4f0e6;
+  --ember: #ff5a1f;
+  --volt: #c8f542;
+  --sky-wash: #7dd3c7;
+  --sand: #e8dfcf;
+  --background: #f7f3ea;
+  --foreground: #0b1f33;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-ember: var(--ember);
+  --color-volt: var(--volt);
+  --color-sky-wash: var(--sky-wash);
+  --color-sand: var(--sand);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(255, 90, 31, 0.14), transparent 32%),
+    radial-gradient(circle at 88% 0%, rgba(200, 245, 66, 0.18), transparent 28%),
+    linear-gradient(180deg, #faf7f0 0%, #efe7d8 100%);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise-in 0.55s ease-out both;
+}
+
+.animate-rise-delay {
+  animation: rise-in 0.65s ease-out 0.12s both;
+}
