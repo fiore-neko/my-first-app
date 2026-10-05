@@ -228,10 +228,10 @@
 .line.hola {
   font-size: clamp(2rem, 8vw, 2.75rem);
   font-weight: 900;
-  color: #ff6eb4;
+  color: #002395;
   text-shadow:
     2px 2px 0 #fff,
-    0 0 24px rgba(255, 110, 180, 0.35);
+    0 0 24px rgba(0, 35, 149, 0.35);
 }
 
 .line.nombre {
